@@ -113,7 +113,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+SECURE_SSL_REDIRECT = False 
+SESSION_COOKIE_SECURE = False 
+SESSION_COOKIE_HTTPONLY= False 
+CSRF_COOKIE_SECURE = False 
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
