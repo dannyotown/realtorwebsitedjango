@@ -29,7 +29,7 @@ DEBUG = os.getenv('PROD') == 'False'
 if os.getenv('PROD') == 'False':
     ALLOWED_HOSTS = ['*']
 else:
-    ALLOWED_HOSTS = ['realtorwebsitedjango.us-east-2.elasticbeanstalk.com']
+    ALLOWED_HOSTS = ['djangorealtor.eba-5e3x9m3e.us-east-2.elasticbeanstalk.com']
 
 # Application definition
 
