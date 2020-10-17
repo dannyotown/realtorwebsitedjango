@@ -1,5 +1,4 @@
 asgiref==3.2.10
-awsebcli==3.19.1
 botocore==1.17.63
 cement==2.8.2
 certifi==2020.6.20
