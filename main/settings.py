@@ -26,10 +26,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('PROD') == 'False'
 
-if os.getenv('PROD') == 'True':
-    ALLOWED_HOSTS = ['realtorwebsitedjango.us-east-2.elasticbeanstalk.com']
-else:
+if os.getenv('PROD') == 'False':
     ALLOWED_HOSTS = ['*']
+else:
+    ALLOWED_HOSTS = ['realtorwebsitedjango.us-east-2.elasticbeanstalk.com']
 
 # Application definition
 
@@ -75,7 +75,14 @@ WSGI_APPLICATION = 'main.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-if os.getenv('PROD') == 'True':
+if os.getenv('PROD') == 'False':
+    DATABASES={
+        'default':{
+            'ENGINE':'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR,'db.sqlite3'),
+        }
+    }
+else:    
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -84,13 +91,6 @@ if os.getenv('PROD') == 'True':
             'PASSWORD': os.getenv('RDS_PASSWORD'),
             'HOST': os.getenv('RDS_HOSTNAME'),
             'PORT': os.getenv('RDS_PORT')
-        }
-    }
-else:    
-    DATABASES={
-        'default':{
-            'ENGINE':'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR,'db.sqlite3'),
         }
     }
 
