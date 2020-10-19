@@ -12,14 +12,14 @@ from .models import Property
 # Create your views here.
 @api_view(['GET'])
 def propertyList(request):
-    Property = Property.objects.all()
-    serializer = PropertySerializer(Property, many=True)
+    prop = Property.objects.all()
+    serializer = PropertySerializer(prop, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def propertyOne(request, pk):
-    Property = Property.objects.get(id=pk)
-    serializer = PropertySerializer(Property, many=False)
+    prop = Property.objects.get(id=pk)
+    serializer = PropertySerializer(prop, many=False)
     return Response(serializer.data)
 
 @api_view(['POST'])
