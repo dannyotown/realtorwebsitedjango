@@ -8,49 +8,61 @@ from django.contrib.auth.decorators import user_passes_test
 
 # GET ALL PROPERTIES.
 @api_view(["GET"])
+@user_passes_test(lambda u: u.is_superuser)
 def propertyList(request):
-    prop = Property.objects.all()
-    serializer = PropertySerializer(prop, many=True)
-    return Response(serializer.data)
+    try:
+        prop = Property.objects.all()
+        serializer = PropertySerializer(prop, many=True)
+        return Response(serializer.data)
+    except:
+        return HttpResponse("Server Error", status=404)
 
 
 # GET ONE PROPERTY.
 @api_view(["GET"])
 def propertyOne(request, pk):
-    prop = Property.objects.get(property_id=pk)
-    serializer = PropertySerializer(prop, many=False)
-    return Response(serializer.data)
-
-
-# CREATE A PROPERTY.
-@api_view(["POST"])
-def propertyCreate(request):
-    serializer = PropertySerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
+    try:
+        prop = Property.objects.get(property_id=pk)
+        serializer = PropertySerializer(prop, many=False)
         return Response(serializer.data)
-    else:
-        return HttpResponse("Property Object is Incorrect", status=400)
+    except:
+        return HttpResponse("Server Error", status=404)
 
 
-# UPDATE A PROPERTY.
-@api_view(["POST"])
-def propertyUpdate(request, pk):
-    prop = Property.objects.get(property_id=pk)
-    serializer = PropertySerializer(instance=task, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data)
-    else:
-        return HttpResponse("Property Object is Incorrect", status=400)
+# # CREATE A PROPERTY.
+# @api_view(["POST"])
+# @user_passes_test(lambda u: u.is_superuser)
+# def propertyCreate(request):
+#     try:
+#         serializer = PropertySerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#         return Response(serializer.data)
+#     except:
+#         return HttpResponse("Server Error", status=404)
 
 
-# DELETE A PROPERTY.
-@api_view(["DELETE"])
-def propertyDelete(request, pk):
-    prop = Property.objects.get(property_id=pk)
-    if prop is not None:
-        prop.delete()
-        return HttpResponse("Property Deleted", status=202)
-    else:
-        return HttpResponse("Property Object is Incorrect", status=400)
+# # UPDATE A PROPERTY.
+# @api_view(["POST"])
+# @user_passes_test(lambda u: u.is_superuser)
+# def propertyUpdate(request, pk):
+#     try:
+#         prop = Property.objects.get(property_id=pk)
+#         serializer = PropertySerializer(instance=task, data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#         return Response(serializer.data)
+#     except:
+#         return HttpResponse("Server Error", status=404)
+
+
+# # DELETE A PROPERTY.
+# @api_view(["DELETE"])
+# @user_passes_test(lambda u: u.is_superuser)
+# def propertyDelete(request, pk):
+#     try:
+#         prop = Property.objects.get(property_id=pk)
+#         prop.delete()
+#         return HttpResponse("Property Deleted", status=202)
+#     except:
+#         return HttpResponse("Server Error", status=404)

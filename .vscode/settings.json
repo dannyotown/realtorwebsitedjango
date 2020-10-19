@@ -1,4 +1,5 @@
 {
     "python.pythonPath": "C:\\Users\\Dtown\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe",
+    "black.path": "/c/Users/Dtown/Documents/GitHub/realtorwebsitedjango/envfolder/Scripts/black",
     "python.formatting.provider": "yapf"
 }

@@ -17,4 +17,7 @@ class Property(models.Model):
     sold = models.BooleanField(null=False, default=False)
     lease = models.BooleanField(null=False, default=False)
     priority = models.IntegerField(default=1)
-    created_date = models.DateTimeField(auto_now=True)
+    lat = models.FloatField()
+    long = models.FloatField()
+    created_date = models.DateTimeField(auto_now=True, editable=False)
+    updated_date = models.DateTimeField(auto_now=True)
