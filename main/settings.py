@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ["PROD"] == "False"
+DEBUG = os.getenv("PROD") == "False"
 
 if os.getenv("PROD") == "False":
     ALLOWED_HOSTS = ["*"]
@@ -89,11 +89,11 @@ else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.environ["RDS_DB_NAME"],
-            "USER": os.environ["RDS_USERNAME"],
-            "PASSWORD": os.environ["RDS_PASSWORD"],
-            "HOST": os.environ["RDS_HOSTNAME"],
-            "PORT": os.environ["RDS_PORT"],
+            "NAME": os.getenv("RDS_DB_NAME"),
+            "USER": os.getenv("RDS_USERNAME"),
+            "PASSWORD": os.getenv("RDS_PASSWORD"),
+            "HOST": os.getenv("RDS_HOSTNAME"),
+            "PORT": os.getenv("RDS_PORT"),
         }
     }
 
@@ -115,8 +115,6 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
 
 
 # Internationalization
