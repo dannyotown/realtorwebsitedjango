@@ -18,7 +18,7 @@ def propertyList(request):
 
 @api_view(['GET'])
 def propertyOne(request, pk):
-    prop = Property.objects.get(id=pk)
+    prop = Property.objects.get(property_id=pk)
     serializer = PropertySerializer(prop, many=False)
     return Response(serializer.data)
 
