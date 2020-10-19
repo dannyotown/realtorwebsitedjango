@@ -14,5 +14,6 @@ class Property(models.Model):
     price = models.IntegerField()
     sold = models.BooleanField(null=False, default=False)
     lease = models.BooleanField(null=False, default=False)
+    priority = models.IntegerField(default=1)
     created_date = models.DateTimeField(auto_now=True)
 
