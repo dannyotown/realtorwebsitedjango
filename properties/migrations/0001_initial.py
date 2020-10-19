@@ -8,25 +8,32 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Property',
+            name="Property",
             fields=[
-                ('property_id', models.AutoField(primary_key=True, serialize=False)),
-                ('address', models.CharField(max_length=200)),
-                ('zip_code', models.IntegerField(validators=[django.core.validators.MaxValueValidator(99999), django.core.validators.MinValueValidator(10000)])),
-                ('city', models.CharField(max_length=100)),
-                ('state_abbreviation', models.CharField(max_length=2)),
-                ('number_of_bedrooms', models.IntegerField()),
-                ('number_of_bathrooms', models.IntegerField()),
-                ('square_feet', models.IntegerField()),
-                ('price', models.IntegerField()),
-                ('sold', models.BooleanField(default=False)),
-                ('lease', models.BooleanField(default=False)),
-                ('created_date', models.DateTimeField(auto_now=True)),
+                ("property_id", models.AutoField(primary_key=True, serialize=False)),
+                ("address", models.CharField(max_length=200)),
+                (
+                    "zip_code",
+                    models.IntegerField(
+                        validators=[
+                            django.core.validators.MaxValueValidator(99999),
+                            django.core.validators.MinValueValidator(10000),
+                        ]
+                    ),
+                ),
+                ("city", models.CharField(max_length=100)),
+                ("state_abbreviation", models.CharField(max_length=2)),
+                ("number_of_bedrooms", models.IntegerField()),
+                ("number_of_bathrooms", models.IntegerField()),
+                ("square_feet", models.IntegerField()),
+                ("price", models.IntegerField()),
+                ("sold", models.BooleanField(default=False)),
+                ("lease", models.BooleanField(default=False)),
+                ("created_date", models.DateTimeField(auto_now=True)),
             ],
         ),
     ]
