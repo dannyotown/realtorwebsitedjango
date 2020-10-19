@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import user_passes_test
 
 # GET ALL PROPERTIES.
 @api_view(["GET"])
-@user_passes_test(lambda u: u.is_superuser)
 def propertyList(request):
     try:
         prop = Property.objects.all()
