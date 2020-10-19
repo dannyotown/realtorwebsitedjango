@@ -24,7 +24,6 @@ def propertyOne(request, pk):
 
 # CREATE A PROPERTY.
 @api_view(["POST"])
-@user_passes_test(lambda u: u.is_superuser)
 def propertyCreate(request):
     serializer = PropertySerializer(data=request.data)
     if serializer.is_valid():
