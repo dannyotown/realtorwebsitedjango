@@ -30,7 +30,9 @@ DEBUG = os.getenv("PROD") == "False"
 if os.getenv("PROD") == "False":
     ALLOWED_HOSTS = ["*"]
 else:
-    ALLOWED_HOSTS = ["djangobackendrealtor.eba-ceuamkka.us-east-2.elasticbeanstalk.com"]
+    ALLOWED_HOSTS = [
+        "realtorwebsitedjango.eba-ppwqjhh7.us-east-2.elasticbeanstalk.com"
+    ]
 
 # Application definition
 
@@ -41,7 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "properties"
+    "properties",
 ]
 
 MIDDLEWARE = [

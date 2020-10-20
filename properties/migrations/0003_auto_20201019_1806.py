@@ -7,30 +7,40 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('properties', '0002_property_priority'),
+        ("properties", "0002_property_priority"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='PropertySerializer',
+            name="PropertySerializer",
             fields=[
-                ('property_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='properties.property')),
+                (
+                    "property_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="properties.property",
+                    ),
+                ),
             ],
-            bases=('properties.property',),
+            bases=("properties.property",),
         ),
         migrations.AddField(
-            model_name='property',
-            name='lat',
+            model_name="property",
+            name="lat",
             field=models.FloatField(default=1),
         ),
         migrations.AddField(
-            model_name='property',
-            name='long',
+            model_name="property",
+            name="long",
             field=models.FloatField(default=1),
         ),
         migrations.AddField(
-            model_name='property',
-            name='updated_date',
+            model_name="property",
+            name="updated_date",
             field=models.DateTimeField(auto_now=True),
         ),
     ]

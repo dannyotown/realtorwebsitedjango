@@ -6,16 +6,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('properties', '0003_auto_20201019_1806'),
+        ("properties", "0003_auto_20201019_1806"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='property',
-            name='deleted',
+            model_name="property",
+            name="deleted",
             field=models.BooleanField(default=False),
         ),
         migrations.DeleteModel(
-            name='PropertySerializer',
+            name="PropertySerializer",
         ),
     ]
