@@ -27,12 +27,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("PROD") == "False"
 
-if os.getenv("PROD") == "False":
-    ALLOWED_HOSTS = ["*"]
-else:
-    ALLOWED_HOSTS = [
-        "realtorwebsitedjango.eba-ppwqjhh7.us-east-2.elasticbeanstalk.com"
-    ]
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -43,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "properties",
+    "properties"
 ]
 
 MIDDLEWARE = [
