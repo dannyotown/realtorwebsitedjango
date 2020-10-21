@@ -20,3 +20,4 @@ urlpatterns = [
     path("", admin.site.urls),
     path("api/", include("properties.urls")),
 ]
+

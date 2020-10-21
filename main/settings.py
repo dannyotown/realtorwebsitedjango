@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("PROD") == "False"
+DEBUG = os.getenv('DEBUG_KEY') == "True"
 
 ALLOWED_HOSTS = ["*"]
 
@@ -131,4 +131,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = "static"
+STATIC_ROOT = 'static'
+ADMIN_MEDIA_PREFIX = '/static/admin/' 
