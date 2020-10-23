@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG_KEY') == "True"
+DEBUG = os.getenv('SECRET_KEY') == "False"
 
 ALLOWED_HOSTS = ["*"]
 
@@ -38,18 +38,22 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'corsheaders',
     "properties"
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+#CORS
+CORS_ALLOW_ALL_ORIGINS=True
 
 ROOT_URLCONF = "main.urls"
 
@@ -114,10 +118,20 @@ USE_L10N = True
 
 USE_TZ = True
 
+#AWS
+
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_KEY")
+
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_BUCKET_NAME")
+AWS_S3_REGION_NAME = os.getenv("AWS_BUCKET_REGION")
+
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = 'static'
-ADMIN_MEDIA_PREFIX = '/static/admin/' 
+STATIC_ROOT =  'static'

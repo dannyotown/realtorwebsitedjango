@@ -21,4 +21,5 @@ class Property(models.Model):
     long = models.FloatField(default=1)
     created_date = models.DateTimeField(auto_now=True, editable=False)
     updated_date = models.DateTimeField(auto_now=True)
+    photos = models.FileField(default='')
     deleted = models.BooleanField(default=False)
