@@ -7,7 +7,7 @@ def getPropertyList(request):
         props = list(Property.objects.values().order_by("priority"))
         return JsonResponse(props, safe=False)
     except:
-        return JsonResponse({"Error": "Server Error"}, status=400)
+        return JsonResponse({"Error": "Server Error"}, status=500)
 
 
 def getProperty(request, pk):
@@ -15,4 +15,4 @@ def getProperty(request, pk):
         props = list(Property.objects.values().filter(property_id=pk))
         return JsonResponse(props, safe=False)
     except:
-        return JsonResponse({"Error": "Server Error"}, status=400)
+        return JsonResponse({"Error": "Server Error"}, status=500)

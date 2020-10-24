@@ -4,6 +4,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 class Property(models.Model):
     property_id = models.AutoField(primary_key=True)
+    description = models.CharField(max_length=1500, default='')
     address = models.CharField(max_length=200)
     zip_code = models.IntegerField(
         validators=[MaxValueValidator(99999), MinValueValidator(10000)]
@@ -21,5 +22,10 @@ class Property(models.Model):
     long = models.FloatField(default=1)
     created_date = models.DateTimeField(auto_now=True, editable=False)
     updated_date = models.DateTimeField(auto_now=True)
-    photos = models.FileField(default='')
+    photo1 = models.FileField(default='')
+    photo2 = models.FileField(default='')
+    photo3 = models.FileField(default='')
+    photo4 = models.FileField(default='')
+    photo5 = models.FileField(default='')
+    photo6 = models.FileField(default='')
     deleted = models.BooleanField(default=False)

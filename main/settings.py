@@ -78,7 +78,7 @@ WSGI_APPLICATION = "main.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-if os.getenv('PROD') == 'True':
+if os.getenv('PROD') == "True":
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql_psycopg2",
