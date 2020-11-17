@@ -22,10 +22,13 @@ class Property(models.Model):
     long = models.FloatField(default=1)
     created_date = models.DateTimeField(auto_now=True, editable=False)
     updated_date = models.DateTimeField(auto_now=True)
-    photo1 = models.FileField(default='')
-    photo2 = models.FileField(default='')
-    photo3 = models.FileField(default='')
-    photo4 = models.FileField(default='')
-    photo5 = models.FileField(default='')
-    photo6 = models.FileField(default='')
+    photo1 = models.FileField(default='',)
+    photo2 = models.FileField(default='',blank=True)
+    photo3 = models.FileField(default='',blank=True)
+    photo4 = models.FileField(default='',blank=True)
+    photo5 = models.FileField(default='',blank=True)
+    photo6 = models.FileField(default='',blank=True)
     deleted = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.address
